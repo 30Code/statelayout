@@ -1,10 +1,10 @@
-package com.fanwe.statelayout;
+package cn.linhome.statelayout;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.fanwe.lib.statelayout.SDStateLayout;
+import cn.linhome.lib.statelayout.SDStateLayout;
 
 public class MainActivity extends AppCompatActivity
 {
