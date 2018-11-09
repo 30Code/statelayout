@@ -10,30 +10,29 @@ import android.widget.FrameLayout;
 
 import java.lang.ref.WeakReference;
 
-
-public class SDStateLayout extends FrameLayout
+public class FStateLayout extends FrameLayout
 {
-    public SDStateLayout(Context context)
+    public FStateLayout(Context context)
     {
         super(context);
         init(null);
     }
 
-    public SDStateLayout(Context context, AttributeSet attrs)
+    public FStateLayout(Context context, AttributeSet attrs)
     {
         super(context, attrs);
         init(attrs);
     }
 
-    public SDStateLayout(Context context, AttributeSet attrs, int defStyleAttr)
+    public FStateLayout(Context context, AttributeSet attrs, int defStyleAttr)
     {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
     private View mContentView;
-    private SDStateView mErrorView;
-    private SDStateView mEmptyView;
+    private FStateView mErrorView;
+    private FStateView mEmptyView;
 
     private boolean mContentTop = true;
 
@@ -102,22 +101,22 @@ public class SDStateLayout extends FrameLayout
         return mContentView;
     }
 
-    public SDStateView getErrorView()
+    public FStateView getErrorView()
     {
         if (mErrorView == null)
         {
-            mErrorView = new SDStateView(getContext());
+            mErrorView = new FStateView(getContext());
             addView(mErrorView);
             hideView(mErrorView);
         }
         return mErrorView;
     }
 
-    public SDStateView getEmptyView()
+    public FStateView getEmptyView()
     {
         if (mEmptyView == null)
         {
-            mEmptyView = new SDStateView(getContext());
+            mEmptyView = new FStateView(getContext());
             addView(mEmptyView);
             hideView(mEmptyView);
         }
@@ -135,10 +134,7 @@ public class SDStateLayout extends FrameLayout
         {
             return;
         }
-        if (view.getVisibility() != View.GONE)
-        {
-            view.setVisibility(View.GONE);
-        }
+        view.setVisibility(View.GONE);
     }
 
     private void showView(View view)
@@ -147,10 +143,7 @@ public class SDStateLayout extends FrameLayout
         {
             return;
         }
-        if (view.getVisibility() != View.VISIBLE)
-        {
-            view.setVisibility(View.VISIBLE);
-        }
+        view.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -165,6 +158,11 @@ public class SDStateLayout extends FrameLayout
         setContentView(getChildAt(0));
     }
 
+    /**
+     * 更新状态view
+     *
+     * @param dataCount 数据数量大于0，显示内容；数据数量小于等于0，显示空内容
+     */
     public void updateState(int dataCount)
     {
         if (dataCount > 0)
@@ -181,6 +179,11 @@ public class SDStateLayout extends FrameLayout
         return mContentTop;
     }
 
+    /**
+     * 设置内容view是否在最顶层，默认true
+     *
+     * @param contentTop true-内容view在最顶层
+     */
     public void setContentTop(boolean contentTop)
     {
         mContentTop = contentTop;
@@ -199,6 +202,11 @@ public class SDStateLayout extends FrameLayout
         }
     }
 
+    /**
+     * 设置要监听的适配器
+     *
+     * @param adapter
+     */
     public void setAdapter(BaseAdapter adapter)
     {
         BaseAdapter oldAdapter = getBaseAdapter();
@@ -265,6 +273,11 @@ public class SDStateLayout extends FrameLayout
         }
     }
 
+    /**
+     * 设置要监听的适配器
+     *
+     * @param adapter
+     */
     public void setAdapter(RecyclerView.Adapter adapter)
     {
         RecyclerView.Adapter oldAdapter = getRecyclerAdapter();
@@ -321,6 +334,4 @@ public class SDStateLayout extends FrameLayout
     }
 
     //---------- RecyclerAdapter end ----------
-
-
 }
