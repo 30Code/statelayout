@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 20181108
-        versionName "1.0.9"
+        versionCode 20181123
+        versionName "1.1.0"
     }
 
     buildTypes {
@@ -23,7 +23,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    compileOnly 'com.android.support:recyclerview-v7:27.1.1'
 }
 
 // 指定编码
